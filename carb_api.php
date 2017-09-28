@@ -14,6 +14,8 @@ $user = $CONFIG["database"]["user"];
 $db = $CONFIG["database"]["name"];
 $password = $CONFIG["database"]["pass"];
 
+error_reporting(E_ALL);
+
 $link = mysqli_init();
 $success = mysqli_real_connect(
 		$link,
@@ -76,11 +78,51 @@ if (!$link) {
 				}
 				$stmt->close();
 			}
-		}
+		}elseif($action == "breakdown"){
+			
+			$items = array("soffritto" , "pepe", "peperoncino" ,
+								"padella" , 
+								"chiara" , 
+								"persone_uova" , 
+								"kindaformaggio" , 
+								"formaggio" );
+			
+			for ($i = 0 ; $i<count($items); $i++){
+			$breakdown_msg = array();
+			$el = $items[$i];
+			$stmt = $link->prepare("SELECT ".$el.", COUNT(*) FROM
+			feedback GROUP BY ".$el);
+			//$stmt = $link->prepare("SELECT * FROM feedback");
+			if ($stmt != false) {
+				$result = $stmt->execute();
+					
+				if ($result) {
+					// this line must be used before bind result
+					// https://bugs.php.net/bug.php?id=51386
+					mysqli_stmt_store_result($stmt);
+					mysqli_stmt_bind_result($stmt,
+					$chiara, $count);
+					while (mysqli_stmt_fetch($stmt)) {
+						$chiara = $chiara == NULL ? "non_sa" : $chiara;
+						array_push($breakdown_msg, 
+							array(
+								$chiara => $count
+							)
+						);
+					}
 				
-	}
+				}
+				$stmt->close();
+			}
+			array_push($msg, array($el => $breakdown_msg));
+			}				
 
+				
+		}
+	}
+				
 }
+
 
 if (sizeof($msg) == 0) {
 	array_push($msg, array(
@@ -91,6 +133,4 @@ if (sizeof($msg) == 0) {
 echo (json_encode($msg));
 //echo "<p>".json_last_error();
 mysqli_close($link);
-
-
 ?>
