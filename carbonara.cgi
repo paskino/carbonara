@@ -138,5 +138,6 @@ if __name__=="__main__":
 		main()
 	except:
 		print "Content-type: text/html"
+		print
 		cgi.print_exception()
 
