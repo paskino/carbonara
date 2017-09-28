@@ -6,9 +6,15 @@
 // @ini_set('implicit_flush', 1);
 @ini_set('display_errors','On');
 
-error_reporting(E_ALL);
+include("config.php");
 
-include '.conn';
+error_reporting(E_ALL);
+$host = $CONFIG["database"]["host"];
+$user = $CONFIG["database"]["user"];
+$db = $CONFIG["database"]["name"];
+$password = $CONFIG["database"]["pass"];
+
+error_reporting(E_ALL);
 
 $link = mysqli_init();
 $success = mysqli_real_connect(
@@ -127,6 +133,4 @@ if (sizeof($msg) == 0) {
 echo (json_encode($msg));
 //echo "<p>".json_last_error();
 mysqli_close($link);
-
-
 ?>

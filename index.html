@@ -1,0 +1,154 @@
+<html>
+<title>Come si fa la pasta alla carbonara ?</title>
+<meta charset="UTF-8">
+</head>
+<body bgcolor=ccddff>
+<p> &Egrave; risultato subito evidente che la pasta alla carbonara non
+&egrave; un piatto da prendere sotto gamba: ognuno si crede detentore della
+verit&agrave; sulla autentica ricetta della pasta alla carbonara.
+L'unica cosa certa &egrave; che alcuni ingradienti sono:
+<ul type=none>
+	<li>Pasta</li>
+	<li>Uova</li>
+	<li>Pancetta o Guanciale</li>
+
+</ul>
+<p> Vogliamo proporre un'indagine statistica sulla carbonara, sulle
+ricette e sugli ingredienti non presenti nella lista per poter valutare
+con il proprio gusto personale quale sia la migliore ricetta.
+<!--Sara' quindi presto disponibile un form da compilare per poter
+partecipare all'indagine.-->
+Vi consigliamo di compilare il form e poi andare a vedere la
+<a href="carb_query.php">ricetta quadratica media</a> della
+pasta alla carbonara.
+
+<form action="carbonara.cgi" method="POST">
+
+<center>
+<table width="300" cellspacing="15">
+<tr>
+	<td colspan="4" align="center">
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td valign="top" rowspan="2">
+			<img src="./images/omino.gif" hspace="15"> 
+			</td>
+			<td>
+				<b>Nome e Cognome</b> (anche falsi)  &nbsp;
+			</td>
+			<td>
+				<input type="text" name="identita" size=30>
+			</td>
+			</tr>
+			<tr><td>
+				<b>Email</b> (se vuoi) &nbsp;
+				</td>
+				<td><input type="text" name="email" size=30></td>
+			</tr>
+	</table>
+</tr>
+<tr>
+<td colspan="4">
+<hr noshade width="100%">
+</td>
+</tr>
+
+<tr>
+	<td valign="top" align="right"><img src="./images/soffritto.gif" hspace="5"></td>
+	<td><b>Come si fa il soffritto?</b><br>
+	<input type=radio name="soffritto" value="PoG"> Solo pancetta o guanciale<br>
+	<input type=radio name="soffritto" value="A"> Aglio e pancetta o guanciale<br>
+	<input type=radio name="soffritto" value="C"> Cipolla e pancetta o guanciale<br>
+	</td>
+
+	<td valign="top" align="right"><img src="./images/chiara.gif" hspace="5"></td>
+	<td><b>Ci va o no la chiara dell'uovo?</b><br>
+	<input type=radio name="chiara" value="Y">S&igrave;<br>
+    <input type=radio name="chiara" value="N">No</td>
+</tr>
+<tr>
+
+	<td valign="top" align="right"><img src="./images/pepe.gif" hspace="5"></td>
+	<td><b>&Egrave; essenziale il Pepe?</b><br>
+	<input type=radio name="pepe" value="Y">Si<br>
+	<input type=radio name="pepe" value="N">No
+	</td>
+
+	<td valign="top" align="right"><img src="./images/peperoncino.gif" hspace="5"></td>
+	<td><b>Ci va il Peperoncino?</b><br>
+	<input type=radio name="peperoncino" value="Y">S&igrave;<br>
+    <input type=radio name="peperoncino" value="N">No</td>
+
+</tr>
+<tr>
+	<td valign="top" align="right"><img src="./images/uova.gif" hspace="5"></td>
+	<td><b>Qual &egrave; la relazione tra il<br>numero di persone e uova?</b><br>
+	<select name="persone/uova">
+	<option value="Un uovo a testa">Un uovo a testa
+	<option value="Piu' uova che persone: per es 3/4">Pi&ugrave; uova che persone: per es 3/4
+	<option value="Meno uova che persone: per es 4/3">Meno uova che persone: per es 4/3
+	</select>
+	</td>
+
+	<td valign="top" align="right"><img src="./images/formaggio.gif" hspace="5"></td>
+	<td valign="top" ><b>Che tipo di formaggio va messo?</b><br>
+	<select name="kindaformaggio">
+	<option value="Parmigiano">Parmigiano
+	<option value="Pecorino Romano">Pecorino Romano
+	<option value="Altro">Altro
+	</select>
+	</td>
+</tr>
+<tr>
+
+	<td valign="top" align="right"><img src="./images/gratta.gif" hspace="5"></td>
+	<td valign="top" ><b>Il formaggio va messo precedentemente
+	nell'uovo o ognuno se lo gratta sul piatto?</b><br>
+	<input type=radio name="formaggio" value="P">Prima<br>
+    <input type=radio name="formaggio" value="D">Dopo<br>
+	<input type=radio name="formaggio" value="PD">Prima e dopo
+	</td>
+
+	<td valign="top" align="right"><img src="./images/padella.gif" hspace="5"></td>
+	<td valign="top" ><b>La pasta condita va fatta risaltare in padella?</b><br>
+  	<input type=radio name="padella" value="Y">S&igrave;<br>
+    <input type=radio name="padella" value="N">No
+	</td>
+</tr>
+<tr>
+<td colspan="4">
+<hr noshade width="100%">
+</td>
+</tr>
+
+<tr>
+
+	<td colspan="1" valign="top"  align="right"><img src="./images/ricetta.gif" hspace="0"></td>
+	<td colspan="3" align="center"><b>Quali sono gli altri ingredienti che usate?<br>Come la preparate?</b><br>
+  	<textarea name="ricetta" rows=10 cols=50></textarea>
+	</td>
+</tr>
+<tr>
+<td colspan="4">
+<hr noshade width="100%">
+</td>
+</tr>
+
+</table>
+
+<input type="submit" style="font-weight: bold;" value="Invia la Ricetta &raquo;">
+<!--<input type="reset" value="Ci ho ripensato...">-->
+</form>
+
+<p> Vai a vedere la
+<a href="ms_carb.html">ricetta quadratica media</a> della
+pasta alla carbonara.
+</center>
+
+
+</form>
+
+
+</body>
+
+</html>
