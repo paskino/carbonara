@@ -1,2 +1,0 @@
-# avoid committing database credentials and configuration parameters
-config.json

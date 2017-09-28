@@ -1,0 +1,16 @@
+{
+	"database": {
+		"user": "user",
+		"pass": "pass",
+		"host": "localhost",
+		"name": "dbname"
+		},
+	"email": {
+		"send": true,
+		"host": "localhost",
+		"recipient": "recipient@example.com",
+		"sender": "sender@example.com",
+		"subject": "Carbonara survey"
+		},
+	"redirect": ""
+}
