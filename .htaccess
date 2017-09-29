@@ -1,4 +1,5 @@
 DirectoryIndex index.html
+RedirectMatch 403 /\..*$
 Options +ExecCGI
 AddHandler cgi-script .cgi
 

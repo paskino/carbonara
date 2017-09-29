@@ -2,7 +2,7 @@
 
 # ALCUNI PARAMETRI DI CONFIGURAZIONE DELLO SCRIPTELLO
 import json
-config = json.load(open("config.json"))
+config = json.load(open(".config.json"))
 
 # definisco i parametri per la connessione al database
 DBuser = config["database"]["user"]
