@@ -2,7 +2,7 @@
 
 # definisco i parametri per la connessione al database
 import json
-config = json.load(open("config.json"))
+config = json.load(open(".config.json"))
 
 DBuser = config["database"]["user"]
 DBpass = config["database"]["pass"]
