@@ -69,28 +69,28 @@ $soffritto_stats[$i]=$dato[1]/$num_rows*100;
 print "<td>Con CIPOLLA</td><td>";
 	printf("%.1f%c</td>",$soffritto_stats[3], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+	<img src=\"./images/red.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$soffritto_stats[3]);
 
 print "<tr><td>Con AGLIO</td><td>";
 	printf("%.1f%c</td>",$soffritto_stats[2], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+	<img src=\"./images/green.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$soffritto_stats[2]);
 
 print "<tr><td>SOLO Pancetta o Guanciale</td><td>";
 	printf("%.1f%c</td>",$soffritto_stats[1], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+	<img src=\"./images/yellow.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$soffritto_stats[1]);
 
 print "<tr><td>NON SA,<br> NON DICE</td><td>";
 	printf("%.1f%c</td>",$soffritto_stats[0], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/blue.gif\" 
+	<img src=\"./images/blue.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$soffritto_stats[0]);
 
@@ -107,21 +107,21 @@ print "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr>";
 print "<td>CON</td><td>";
 	printf("%.1f%c</td>",$chiara_stats[1], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+	<img src=\"./images/red.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$chiara_stats[1]);
 
 print "<tr><td>SENZA</td><td>";
 	printf("%.1f%c</td>",$chiara_stats[2], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+	<img src=\"./images/green.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$chiara_stats[2]);
 
 print "<tr><td>NON SA,<br> NON DICE</td><td>";
 	printf("%.1f%c</td>",$chiara_stats[0], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+	<img src=\"./images/yellow.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$chiara_stats[0]);
 
@@ -164,28 +164,28 @@ print "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr>";
 	print "<tr><td>1/1</td><td>";
 		printf("%.1f%c</td>",$puova_stats[1], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+		<img src=\"./images/red.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$puova_stats[1]);
 	
 	print "<tr><td>+</td><td>";
 		printf("%.1f%c</td>",$puova_stats[2], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+		<img src=\"./images/green.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$puova_stats[2]);
 		
 	print "<tr><td>-</td><td>";
 		printf("%.1f%c</td>",$puova_stats[3], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+		<img src=\"./images/yellow.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$puova_stats[2]);
 		
 	print "<tr><td>NON SA,<br> NON DICE</td><td>";
 		printf("%.1f%c</td>",$puova_stats[0], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/blue.gif\" 
+		<img src=\"./images/blue.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$puova_stats[0]);
 
@@ -220,21 +220,21 @@ $pepe_stats[$i]=$dato[1]/$num_rows*100;
 print "<tr><td>SI</td><td>";
 	printf("%.1f%c</td>",$pepe_stats[1], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+	<img src=\"./images/red.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$pepe_stats[1]);
 		
 print "<tr><td>NO</td><td>";
 	printf("%.1f%c</td>",$pepe_stats[2], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+	<img src=\"./images/green.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$pepe_stats[2]);
 		
 print "<tr><td>NON SA,<br> NON DICE</td><td>";
 	printf("%.1f%c</td>",$pepe_stats[0], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+	<img src=\"./images/yellow.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$pepe_stats[0]);
 		
@@ -262,21 +262,21 @@ print "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr>";
 	print "<tr><td>SI</td><td>";
 		printf("%.1f%c</td>",$peperoncino_stats[1], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+		<img src=\"./images/red.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$peperoncino_stats[1]);
 		
 	print "<tr><td>NO</td><td>";
 		printf("%.1f%c</td>",$peperoncino_stats[2], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+		<img src=\"./images/green.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$peperoncino_stats[2]);
 		
 	print "<tr><td>NON SA,<br> NON DICE</td><td>";
 		printf("%.1f%c</td>",$peperoncino_stats[0], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+		<img src=\"./images/yellow.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$peperoncino_stats[0]);
 		
@@ -308,28 +308,28 @@ print "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr>";
 	print "<tr><td>Parmigiano</td><td>";
 		printf("%.1f%c</td>",$cheese_stats[2], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+		<img src=\"./images/red.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$cheese_stats[2]);
 		
 	print "<tr><td>Pecorino Romano</td><td>";
 		printf("%.1f%c</td>",$cheese_stats[3], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+		<img src=\"./images/green.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$cheese_stats[3]);
 		
 	print "<tr><td>Altro</td><td>";
 		printf("%.1f%c</td>",$cheese_stats[1], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+		<img src=\"./images/yellow.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$cheese_stats[1]);
 		
 	print "<tr><td>NON SA,<br> NON DICE</td><td>";
 		printf("%.1f%c</td>",$cheese_stats[0], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/blue.gif\" 
+		<img src=\"./images/blue.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$cheese_stats[0]);
 		
@@ -357,28 +357,28 @@ print "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr>";
 	print "<tr><td>PRIMA</td><td>";
 		printf("%.1f%c</td>",$wcheese_stats[1], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+		<img src=\"./images/red.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$wcheese_stats[1]);
 		
 	print "<tr><td>DOPO</td><td>";
 		printf("%.1f%c</td>",$wcheese_stats[2], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+		<img src=\"./images/green.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$wcheese_stats[2]);
 		
 	print "<tr><td>prima E dopo</td><td>";
 		printf("%.1f%c</td>",$wcheese_stats[3], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+		<img src=\"./images/yellow.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$wcheese_stats[3]);
 		
 	print "<tr><td>NON SA,<br> NON DICE</td><td>";
 		printf("%.1f%c</td>",$wcheese_stats[0], 37);
 		print "<td width=100>
-		<img src=\"http://mau.aperion.it/img/icons/blue.gif\" 
+		<img src=\"./images/blue.png\" 
 		height=10 width=";
 		printf ("%.0f ></td>",$wcheese_stats[0]);
 		
@@ -410,21 +410,21 @@ $padella_stats[$i]=$dato[1]/$num_rows*100;
 print "<tr><td>SI SALTA</td><td>";
 	printf("%.1f%c</td>",$padella_stats[1], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/red.gif\" 
+	<img src=\"./images/red.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$padella_stats[1]);
 		
 print "<tr><td>NON SI SALTA</td><td>";
 	printf("%.1f%c</td>",$padella_stats[2], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/green.gif\" 
+	<img src=\"./images/green.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$padella_stats[2]);
 		
 print "<tr><td>NON SA,<br> NON DICE</td><td>";
 	printf("%.1f%c</td>",$padella_stats[0], 37);
 	print "<td width=100>
-	<img src=\"http://mau.aperion.it/img/icons/yellow.gif\" 
+	<img src=\"./images/yellow.png\" 
 	height=10 width=";
 	printf ("%.0f ></td>",$padella_stats[0]);
 		
