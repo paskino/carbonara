@@ -88,7 +88,6 @@ if (!$link) {
 								"formaggio" );
 			
 			for ($i = 0 ; $i<count($items); $i++){
-			$breakdown_msg = array();
 			$el = $items[$i];
 			$stmt = $link->prepare("SELECT ".$el.", COUNT(*) FROM
 			feedback GROUP BY ".$el);
@@ -102,19 +101,16 @@ if (!$link) {
 					mysqli_stmt_store_result($stmt);
 					mysqli_stmt_bind_result($stmt,
 					$chiara, $count);
+					$breakdown_msg = array();
 					while (mysqli_stmt_fetch($stmt)) {
 						$chiara = $chiara == NULL ? "non_sa" : $chiara;
-						array_push($breakdown_msg, 
-							array(
-								$chiara => $count
-							)
-						);
+						$breakdown_msg += array( $chiara => $count ) ;
 					}
 				
 				}
 				$stmt->close();
 			}
-			array_push($msg, array($el => $breakdown_msg));
+			$msg += array($el => $breakdown_msg);
 			}				
 
 				
