@@ -17,51 +17,30 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
+//https://bl.ocks.org/mbostock/1346410
+var dbMap = {'PoG': 'Solo Pancetta o Guanciale', 'C': 'Con Cipolla' ,
+'A' : 'Con Aglio' , 'non_sa': 'Non sa, non dice' , 'Y': 'Si' , 'N': 'No',
+'Altro': 'Altro', 'Parmigiano' : 'Parmigiano', 
+'Pecorino Romano': 'Pecorino Romano', 'P':'Prima', 'D':'Dopo', 
+'PD':'Prima e dopo'};
 
 var width = 960,
     height = 500,
     radius = Math.min(width, height) / 2;
 
-var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+//var color = d3.scale.ordinal()
+//    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+var color = d3.scale.category10();
 
 var arc = d3.svg.arc()
     .outerRadius(radius - 10)
-    .innerRadius(radius - 70);
+    .innerRadius(radius - 170);
 
 var pie = d3.layout.pie()
     .sort(null)
-    .value(function(d) { return d.population; });
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-	/*
-d3.csv("data.csv", type, function(error, data) {
-  if (error) throw error;
-
-  var g = svg.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
-      .attr("class", "arc");
-
-  g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
-
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data.age; });
-});
-*/
-function type(d) {
-  d.population = +d.population;
-  return d;
-}
+    .value(function(d,i) { 
+    	k = Object.keys(d)[0]; 
+	return d[k]; });
 
 var recdata ;
 
@@ -94,35 +73,79 @@ var remoteFetch = function(url, action){
 				console.log("success");
 				
 				recdata = JSON.parse(data);
-				/*
-        var g = svg.selectAll(".arc")
-					  .data(pie(recdata['soffritto']))
-					.enter().append("g")
-					  .attr("class", "arc");
 
-				g.append("path")
-					  .attr("d", arc)
-					  .style("fill", function(d) { return color(d.data.age); });
+				createPieCharts(recdata);
+				//x = recdata[1];
+				//createPieChart(x[Object.keys(x)[0]]);
+				//console.log(data);
 
-				g.append("text")
-					  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-					  .attr("dy", ".35em")
-					  .text(function(d) { return d.data.age; });
-				*/
-				
-				console.log(data);
 			} ,
 			
 		};
-		console.log(ajaxPars.url);
+		//console.log(ajaxPars.url);
 		$.ajax(ajaxPars);
+
+
+}
+
+var createPieCharts = function (data,which){
+
+	data.forEach(x=> {
+		console.log("CreatePieChart for " + Object.keys(x)[0]);
+		createPieChart(x[Object.keys(x)[0]]);
+		});
+	//createPieChart(data[which]);
+
+}
+
+//var piedata ;
+var createPieChart = function(data){
+	console.log("call createPieChart");
+	//piedata = pie(data);
+        var g = svg.selectAll(".arc")
+		.data([]).remove()
+		.data(pie(data))
+		.enter().append("g")
+		.attr("class", "arc");
+ 	
+	//console.log(arc);
+ 	g.append("path")
+	  .attr("d", arc)
+	  .style("fill", function(d,i) {
+		  return color(i); });
+
+	g.append("text")
+	 .attr("transform", function(d) { 
+
+	 	k = Object.keys(d['data'])[0];
+		v = d['data'][k];
+	 	//console.log("d[k] " + v + " centroid " + arc.centroid(d));
+	 	return "translate(" + arc.centroid(d) + ")"; })
+	 .attr("dy", ".35em")
+	 .text(function(d) { 
+	 	k = Object.keys(d['data'])[0];
+		console.log("Text: " + dbMap[k] + " " + k );
+		return dbMap[k]; });
+
+}
+var updatePieChart = function(data){
+	console.log("call updatePieChart");
+	//piedata = pie(data);
+        svg.selectAll('.arc').data(pie(data)).enter();
 }
 </script>
 </head>
 <body>
 
 <script>
+var svg;
 $(document).ready(function(){
+svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
 
 remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "breakdown");
 })
