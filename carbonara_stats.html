@@ -44,7 +44,7 @@ var pie = d3.layout.pie()
 
 var recdata ;
 
-var remoteFetch = function(url, action){
+var remoteFetch = function(url, action , callback){
 	var ajaxPars = {
 			url: url,
 			type : "GET",
@@ -74,7 +74,7 @@ var remoteFetch = function(url, action){
 				
 				recdata = JSON.parse(data);
 
-				createPieCharts(recdata);
+				callback(recdata);
 				//x = recdata[1];
 				//createPieChart(x[Object.keys(x)[0]]);
 				//console.log(data);
@@ -138,6 +138,55 @@ var updatePieChart = function(data){
 <body>
 
 <script>
+var histodata = [];
+var createRecipeIndex = function(datum){
+
+	question = {"chiara": {"Y":2 , "N":1 , "non_sa": 0} , 
+		    "formaggio": {"P":3 , "D":2, "PD":1 , "non_sa" :0} , 
+		    "kindaformaggio" : {"Pecorino Romano":2, "Parmigiano":1 ,
+		    "Altro" : 0},
+	 	    "padella": {"Y":2 , "N" : 1, "non_sa":0} , 
+		    "pepe" : {"Y":2 , "N" : 1, "non_sa":0} ,
+		    "peperoncino": {"Y":2 , "N" : 1, "non_sa":0} ,
+		    "persone_uova": {"+":3 , "-" : 2, "=": 1, "non_sa":0}  , 
+		    "soffritto" : {"PoG" : 3 , "C": 2, "A": 1, "non_sa":0}}
+	keys_datum = Object.keys(datum);
+	keys_q = Object.keys(question);
+
+        /*
+	idx = keys_datum.reduce((x,y)=> {
+		col = $.inArray(keys_datum[x],keys_q);
+		if ( col>=0 ){
+			dx = datum[x];
+			qdx = question[dx];
+			return col * 4 * question[datum[x]] ;
+		} else 
+			return 0; 
+	} , 0 )
+	*/
+	idx = 0;
+	for (i = 0; i < keys_datum.length; i++){
+		col = $.inArray(keys_datum[i], keys_q);
+		if (col >=0){
+			x = keys_datum[i];
+			dx = datum[x];
+			qdx = question[x][dx];
+			addidx =  Math.pow(4,col) * qdx ;
+			idx += addidx;
+		}
+	}
+	return idx;
+}
+
+var idx_data = [];
+
+var histo = function(data){
+
+//create histogram with frequency of recipes
+data.forEach(x=>histodata.push(x));
+idx_data = histodata.map (x=>createRecipeIndex(x));
+
+}
 var svg;
 $(document).ready(function(){
 svg = d3.select("body").append("svg")
@@ -147,7 +196,8 @@ svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
-remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "breakdown");
+remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "breakdown", createPieCharts);
+remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "get_all", histo);
 })
 </script>
 
