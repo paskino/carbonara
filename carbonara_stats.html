@@ -143,8 +143,8 @@ var createRecipeIndex = function(datum){
 
 	question = {"chiara": {"Y":2 , "N":1 , "non_sa": 0} , 
 		    "formaggio": {"P":3 , "D":2, "PD":1 , "non_sa" :0} , 
-		    "kindaformaggio" : {"Pecorino Romano":2, "Parmigiano":1 ,
-		    "Altro" : 0},
+		    "kindaformaggio" : {"Pecorino Romano":3, "Parmigiano":2 ,
+		    "Altro" : 1, 'non_sa' : 0},
 	 	    "padella": {"Y":2 , "N" : 1, "non_sa":0} , 
 		    "pepe" : {"Y":2 , "N" : 1, "non_sa":0} ,
 		    "peperoncino": {"Y":2 , "N" : 1, "non_sa":0} ,
@@ -170,21 +170,37 @@ var createRecipeIndex = function(datum){
 		if (col >=0){
 			x = keys_datum[i];
 			dx = datum[x];
+			if (typeof dx === 'undefined'){
+				dx = 'non_sa';
+			} else if (dx == null){
+				dx = 'non_sa';
+			}
 			qdx = question[x][dx];
-			addidx =  Math.pow(4,col) * qdx ;
-			idx += addidx;
+			if (qdx != 0){
+			    addidx =  Math.pow(4,col) * qdx ;
+			    idx += addidx;
+			}
 		}
 	}
 	return idx;
 }
 
 var idx_data = [];
+var hd = {}
 
 var histo = function(data){
 
 //create histogram with frequency of recipes
 data.forEach(x=>histodata.push(x));
 idx_data = histodata.map (x=>createRecipeIndex(x));
+
+idx_data.forEach(x=> {
+	if (hd.hasOwnProperty(x)){
+		hd[x] += 1;
+	} else {
+		hd[x] = 1;
+	}
+});
 
 }
 var svg;
