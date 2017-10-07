@@ -91,21 +91,36 @@ var remoteFetch = function(url, action , callback){
 var createPieCharts = function (data,which){
 
 	data.forEach(x=> {
+		k = Object.keys(x)[0];
 		console.log("CreatePieChart for " + Object.keys(x)[0]);
-		createPieChart(x[Object.keys(x)[0]]);
+		createPieChart(x[k],k);
 		});
 	//createPieChart(data[which]);
 
 }
 
 //var piedata ;
-var createPieChart = function(data){
+var counter = 0;
+var createPieChart = function(data, title){
 	console.log("call createPieChart");
 	//piedata = pie(data);
-        var g = svg.selectAll(".arc")
+	svg.attr("height" , height * (data.length + 0.5));
+	shift = counter %2 == 0? 1: 2;
+        var thepie = svg.selectAll(".pie")
+		.data([]).remove()
+		.data([title])
+		.enter()
+	        .append("g")
+                .attr("transform", function(d, i) { return "translate(" +
+		    shift * width / 2 + "," +  (counter + 1) * height / 2 + ")" ;})
+                .attr("class", "pie");
+	counter++;
+		
+	var g =	thepie.selectAll(".arc")
 		.data([]).remove()
 		.data(pie(data))
-		.enter().append("g")
+		.enter()
+	        .append("g")
 		.attr("class", "arc");
  	
 	//console.log(arc);
@@ -126,6 +141,10 @@ var createPieChart = function(data){
 	 	k = Object.keys(d['data'])[0];
 		console.log("Text: " + dbMap[k] + " " + k );
 		return dbMap[k]; });
+	thepie.append("g")
+	      .append("text")
+	      .text(title)
+	      .attr("transform" , "translate(-60,0)");
 
 }
 var updatePieChart = function(data){
@@ -206,11 +225,8 @@ idx_data.forEach(x=> {
 var svg;
 $(document).ready(function(){
 svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
+    .attr("width", width * 2)
+    .attr("height", height);
 
 remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "breakdown", createPieCharts);
 remoteFetch("http://edo.imanetti.net/carbonara/carb_api.php", "get_all", histo);
